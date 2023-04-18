@@ -7,11 +7,11 @@
 mars(formula, data, control)
 }
 \arguments{
-\item{formula}{an object of class \code{formula} (or one that can be coerced to that class): a symbolic description of the model to be fitted.}
+\item{formula}{interface to specify response and explanatory variables, a variable of the model to be fitted.}
 
-\item{data}{an optional data frame, list or environment (or object coercible by as.data.frame to a data frame) containing the variables in the model.}
+\item{data}{A data frame, list, or environment, containing the variables in the model. If not found in the data, the variables are taken from the environment of formula}
 
-\item{control}{an object of class \code{mars.control}. The default mars.control has Mmax (the maximum number of model terms) is 2 and d (the smoothing parameter) is 3, but users can customize their mars.control.}
+\item{control}{An object of mars.control with Mmax = 2 and d = 3, by default.}
 }
 \value{
 a \code{mars} object, which contain the model
@@ -20,7 +20,7 @@ a \code{mars} object, which contain the model
 The mars() function, which is the main function in the MARS Package, performs a Multivariate Adaptive Regression Splines (MARS) analysis. The MARS algorithm builds a regression model by partitioning the predictor variables into segments and fitting a linear regression model to each segment.
 }
 \details{
-MARS is a non-parametric regression technique that partitions the predictor space into simple regions defined by piecewise linear functions of the input variables. The MARS algorithm uses a forward stepwise approach to iteratively add basis functions to the model. This is done until a specified maximum number of functions or a stopping criterion is reached. Then, a backward stepwise approach is used to prune the modelby removing any basis functions that do not contribute significantly to the model's performance.
+MARS is a non-parametric regression technique that partitions the predictor space into simple regions defined by piecewise linear functions of the input variables. The MARS algorithm uses a forward stepwise approach to iteratively add basis functions to the model.
 }
 \examples{
 test1 <- mars(y~., data1[1:100,], mars.control(Mmax=6))
@@ -28,7 +28,7 @@ print(test1)
 summary(test1)
 plot(test1)
 anova(test1)
-predict(test1,data1[101:200,2:10])
+predict(test1,data1[101:200,1:10])
 
 }
 \references{

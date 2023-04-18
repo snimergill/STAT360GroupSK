@@ -3,11 +3,11 @@
 #' @description The mars() function, which is the main function in the MARS Package, performs a Multivariate Adaptive Regression Splines (MARS) analysis. The MARS algorithm builds a regression model by partitioning the predictor variables into segments and fitting a linear regression model to each segment.
 #'
 #' @usage mars(formula, data, control)
-#' @param formula an object of class `formula` (or one that can be coerced to that class): a symbolic description of the model to be fitted.
-#' @param data an optional data frame, list or environment (or object coercible by as.data.frame to a data frame) containing the variables in the model.
-#' @param control an object of class `mars.control`. The default mars.control has Mmax (the maximum number of model terms) is 2 and d (the smoothing parameter) is 3, but users can customize their mars.control.
+#' @param formula interface to specify response and explanatory variables, a variable of the model to be fitted.
+#' @param data A data frame, list, or environment, containing the variables in the model. If not found in the data, the variables are taken from the environment of formula
+#' @param control An object of mars.control with Mmax = 2 and d = 3, by default.
 #'
-#' @details MARS is a non-parametric regression technique that partitions the predictor space into simple regions defined by piecewise linear functions of the input variables. The MARS algorithm uses a forward stepwise approach to iteratively add basis functions to the model. This is done until a specified maximum number of functions or a stopping criterion is reached. Then, a backward stepwise approach is used to prune the modelby removing any basis functions that do not contribute significantly to the model's performance.
+#' @details MARS is a non-parametric regression technique that partitions the predictor space into simple regions defined by piecewise linear functions of the input variables. The MARS algorithm uses a forward stepwise approach to iteratively add basis functions to the model.
 #'
 #' @return a `mars` object, which contain the model
 #' @export
@@ -18,7 +18,7 @@
 #' summary(test1)
 #' plot(test1)
 #' anova(test1)
-#' predict(test1,data1[101:200,2:10])
+#' predict(test1,data1[101:200,1:10])
 #'
 #' @import stats
 #' @references Jerome H. Friedman. Multivariate Adaptive Regression Splines (with discussion).Annals of Statistics 19/1, 1991. \url{https://statistics.stanford.edu/research/multivariate-adaptive-regression-splines.}
@@ -50,13 +50,9 @@ mars <- function(formula,data,control=mars.control()) {
 #' This function constructs a 'mars.control' object that specifies
 #' parameters used in mars.
 #'
-#' @param Mmax Maximum number of basis functions. Should be an even integer.
-#' Default value is 2.
-#' @param d The parameter used in calculation of Generalized cross-validation.
-#' Default value is 3.
-#' @param trace A True or False value that allows user to see the candidate
-#' basis functions that might reduce GCV in backward selection procedure similar
-#' to linear regression modelling.
+#' @param Mmax Maximum number of basis functions. Should be an even integer. Default is 2.
+#' @param d The parameter used in calculation of Generalized cross-validation. Default is 3.
+#' @param trace logical input to interpret the data basis functions that might reduce GCV in backward selection.
 #'
 #' @return an object of class 'mars.control', that is a list of parameters
 #' @export

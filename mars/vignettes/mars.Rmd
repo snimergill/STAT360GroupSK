@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 #library(mars)
 ```
 
-[link](https://github.com/yza608/stat360GroupKDH)  
+https://github.com/snimergill/STAT360GroupSK.git  
 
 # Description
 
@@ -32,7 +32,7 @@ The `mars()` function, which is the main function in the **MARS Package**, perfo
 # Arguments
 
 Argument| Meaning
-
+--------|--------
 Formula| interface to specify response and explanatory variables, a variable of the model to be fitted.
 Data    | A data frame, list, or environment, containing the variables in the model. If not found in the data, the variables are taken from the environment of *"formula"*
 Control | An object of *"mars.control"* with Mmax = 2 and d = 3, by default.
@@ -45,7 +45,9 @@ MARS is a nonparametric regression technique that divides the predictor space in
  
  * Mmax,  maximum number of model terms or basis functions = 2 
  * d,  smoothing parameter to consider or degree of interaction  = 3 
- * trace, a boolean indicating whether the function prints progress messages = FALSE. As Friedman suggested, the user can customize  Mmax and d, but Mmax must be an integer greater than or equal to 2, and d = 3 is optimal. If any validation fails, a warning or error message is printed and the values ​​are reset to  default values. 
+ * trace, a boolean indicating whether the function prints progress messages = FALSE. 
+  
+  As Friedman suggested, the user can customize  Mmax and d, but Mmax must be an integer greater than or equal to 2, and d = 3 is optimal. If any validation fails, a warning or error message is printed and the values ​​are reset to  default values. 
   Within mars(), the fwd_stepwise() (based on Algorithm 2) and bwd_stepwise() (based on Algorithm 3) functions are called to perform the forward and backward steps of the MARS algorithm respectively. The LOF() (based on Generalized Cross-Validation or GCV) and h() functions are also called within fwd_stepwise() to compute the lack of non-fitting criteria and use the hinge function respectively to determine the optimal Determine split points. function. The LOF() function is also called inside bwd_stepwise(). The `h()` function has the form $max(0,x-c)$ or $max(0,c-x)$ (these are mirror images).
 
 
@@ -74,10 +76,8 @@ qr | The QR decomposition of the model matrix.
 
 # Authors
 
-* **Yiding (Daniel) Zhi** (BSc Data Science)  
-* **Kara (My Ngoc Nhu) Nguyen** (BSc Health Sciences, concentration in Life Science)  
-* **Harshit Goyal** (BA Economics, concentration in Economic Data Analysis and Minor Statistics)  
-
+* **Snimer Singh Gill** Role| Author, creator
+* **Kirandeep kaur** Role| Contributor 
 
 # References
 
@@ -92,14 +92,13 @@ qr | The QR decomposition of the model matrix.
 
 # See Also
 
-**summary()`** returns a summary table of all independent variable estimate coefficients for the dependent variable. Also provided is the sign (indicating the split direction is left: -1 or right: 1)  for each independent variable and the node for each split. 
+**`summary()`** returns a summary table of all independent variable estimate coefficients for the dependent variable. Also provided is the sign (indicating the split direction is left: -1 or right: 1)  for each independent variable and the node for each split. 
  **`anova()`** We first call the function `mars()` to briefly return a summary table of  coefficients for all  variables from the data. `anova.()` also has a similar function to `anova()` to compute the ANOVA table of  one or more linear model fits and return an ANOVA table containing all  degrees of freedom (Df) values. return. Sum of squares (Sum Sq), mean square (Mean Sq), F-statistic (F-value), and P-value (Pr). 
- **predict()`** generates new dependent values ​​based on the dataset.  **`print()`** also calls the `mars()` function and the regression model formula before returning the coefficients for each independent variable. 
+ **`predict()`** generates new dependent values ​​based on the dataset.  
+ **`print()`** also calls the `mars()` function and the regression model formula before returning the coefficients for each independent variable. 
   **`plot()`** produces four different residual plots. 
  
  * The **Cumulative Distribution** plot shows the empirical *cumulative distribution function (CDF)* of the data. The empirical CDF is the ratio of values ​​less than or equal to X. It is an increasing step function that exhibits a vertical jump of 1/N for each value of X equal to the observed value. 
  * The **Residuals vs. Fit** plot is a scatterplot of residuals on the y-axis and fitted values ​​(estimated responses) on the x-axis. The chart detects nonlinearities, uneven error variances, and outliers. 
  *  **Normal Q-Q** plots are used to assess how well the distribution of a data set fits a *normal (Gaussian) standard distribution* with mean  0 and  standard deviation  1. 
  * The **Scale-Location** plot plots a function of the residuals that reflects the  variability of the error about the mean. I'm looking for a point cloud that looks random. An increasing relationship means that as the mean increases the variance increases  and vice versa.
-
-

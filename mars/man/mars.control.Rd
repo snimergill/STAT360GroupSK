@@ -7,15 +7,11 @@
 mars.control(Mmax = 2, d = 3, trace = FALSE)
 }
 \arguments{
-\item{Mmax}{Maximum number of basis functions. Should be an even integer.
-Default value is 2.}
+\item{Mmax}{Maximum number of basis functions. Should be an even integer. Default is 2.}
 
-\item{d}{The parameter used in calculation of Generalized cross-validation.
-Default value is 3.}
+\item{d}{The parameter used in calculation of Generalized cross-validation. Default is 3.}
 
-\item{trace}{A True or False value that allows user to see the candidate
-basis functions that might reduce GCV in backward selection procedure similar
-to linear regression modelling.}
+\item{trace}{logical input to interpret the data basis functions that might reduce GCV in backward selection.}
 }
 \value{
 an object of class 'mars.control', that is a list of parameters
